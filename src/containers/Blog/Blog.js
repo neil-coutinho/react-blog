@@ -19,7 +19,8 @@ class Blog extends Component {
 
    async componentDidMount() {
 
-        const {data: posts} = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        let {data: posts} = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        posts = posts.slice(0,5);
         this.setState({posts})
     }
  
@@ -30,7 +31,7 @@ class Blog extends Component {
     render () {
 
 
-        const posts = this.state.posts.map(({title}, index) => <Post title={title} key={index} onClickHandler={() => this.onPostClick(index)}/>);
+        const posts = this.state.posts.map(({title, id}, index) => <Post title={title} key={id} onClickHandler={() => this.onPostClick(id)}/>);
 
 
         return (
