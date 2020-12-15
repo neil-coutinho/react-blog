@@ -12,7 +12,8 @@ class Blog extends Component {
         super(props)
 
        this.state = {
-           posts: []
+           posts: [],
+           selectedPost: null
        }
     }
 
@@ -21,13 +22,15 @@ class Blog extends Component {
         const {data: posts} = await axios.get('https://jsonplaceholder.typicode.com/posts');
         this.setState({posts})
     }
-
-
+ 
+    onPostClick(id) {
+        this.setState({selectedPost: id})
+    }
 
     render () {
 
 
-        const posts = this.state.posts.map(({title}, index) => <Post title={title} key={index}/>);
+        const posts = this.state.posts.map(({title}, index) => <Post title={title} key={index} onClickHandler={() => this.onPostClick(index)}/>);
 
 
         return (
@@ -36,7 +39,7 @@ class Blog extends Component {
                    { posts }
                 </section>
                 <section>
-                    <FullPost />
+                    <FullPost postId={this.state.selectedPost}/>
                 </section>
                 <section>
                     <NewPost />
