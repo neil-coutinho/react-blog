@@ -45,8 +45,8 @@ class FullPost extends Component {
             if(data) {
                 post = (
                     <div className="FullPost">
-                        <h1>Title</h1>
-                        <p>Content</p>
+                        <h1>{data.title}</h1>
+                        <p>{data.body}</p>
                         <div className="Edit">
                             <button className="Delete">Delete</button>
                         </div>
