@@ -25,7 +25,6 @@ class Posts extends Component {
         const posts = this.state.posts.map(({title, id}, index) => <Post title={title} key={id} onClickHandler={() => this.onPostClick(id)}/>);
         return (
         <section className="Posts">
-            {this.state.selectedPost}
             { posts }
         </section>)
     }
