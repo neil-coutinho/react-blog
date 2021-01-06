@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import './FullPost.css';
+import { withRouter } from "react-router-dom";
 
 class FullPost extends Component {
 
     constructor(props) {
         super(props);
-
+        this.postId = this.props.match.params.id;
         this.state = {
             post: null,
             
 
         }
+
+       
     }
 
-    async componentDidUpdate() {
-       if(this.props.postId) {
+    async componentDidMount() {
+       
+       if(this.postId) {
 
         const currentPost = this.state.post;
 
-        if(!currentPost || (currentPost && currentPost.id != this.props.postId)) {
-            const { data: post } = await axios.get(`https://jsonplaceholder.typicode.com/posts/${this.props.postId}`);
+       
+
+        if(!currentPost || (currentPost && currentPost.id != this.postId)) {
+            const { data: post } = await axios.get(`https://jsonplaceholder.typicode.com/posts/${this.postId}`);
             this.setState({post})
         }
        
@@ -36,7 +42,7 @@ class FullPost extends Component {
     render () {
         let post = <p style={{textAlign: "center"}}>Please select a Post!</p>;
 
-        if(this.props.postId) {
+        if(this.postId) {
 
             let data = this.state.post;
 
@@ -62,4 +68,4 @@ class FullPost extends Component {
     }
 }
 
-export default FullPost;
+export default withRouter(FullPost);
