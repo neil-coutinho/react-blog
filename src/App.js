@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import Blog from './containers/Blog/Blog';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import NewPost from "./components/NewPost/NewPost";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+
 
 
 class App extends Component {
@@ -10,13 +12,15 @@ class App extends Component {
       <Router>
          <div className="App">
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/new-post">New Post</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to={{
+              pathname: 'new-post'
+            }}>New Post</Link></li>
           </ul>
-          <Blog />
+          {/* <Blog /> */}
 
-          <Route  path="/" exact>/</Route>
-          <Route  path="/new-post">/new-post</Route>
+          <Route  path="/" exact component={Blog}></Route>
+          <Route  path="/new-post" component={NewPost}></Route>
         </div>
       </Router>
      
