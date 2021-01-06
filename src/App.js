@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Blog from './containers/Blog/Blog';
 import NewPost from "./components/NewPost/NewPost";
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, NavLink} from "react-router-dom";
 
 
 
@@ -13,9 +13,9 @@ class App extends Component {
          <div className="App">
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to={{
-              pathname: 'new-post'
-            }}>New Post</Link></li>
+            <li><NavLink exact to="/new-post" activeStyle={{
+              color: 'red'
+            }} activeClassName="activeClass">New Post</NavLink></li>
           </ul>
           {/* <Blog /> */}
 
