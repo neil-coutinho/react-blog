@@ -8,10 +8,14 @@ import FullPost from './components/FullPost/FullPost';
 
 
 class App extends Component {
+
+ 
+
   render() {
     return (
       <Router>
          <div className="App">
+          
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><NavLink exact to="/new-post" activeStyle={{

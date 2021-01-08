@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import Post from "../Post/Post";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 class Posts extends Component {
 
     state = {
@@ -20,7 +20,13 @@ class Posts extends Component {
     // onPostClick(id) {
     //     this.setState({selectedPost: id})
     // }
-
+    newPost = () => {
+        console.log(this.props)
+        //this.props.history.push('new-post')
+        this.props.history.push({
+            pathname: 'new-post'
+        })
+    }
 
     render() {
         const posts = this.state.posts.map(
@@ -31,10 +37,14 @@ class Posts extends Component {
                
             );
         return (
-        <section className="Posts">
+        <section>
+            <button onClick={this.newPost}>New Post</button>
+            <div  className="Posts">
             { posts }
+            </div>
+           
         </section>)
     }
 }
 
-export default Posts
+export default withRouter(Posts)
