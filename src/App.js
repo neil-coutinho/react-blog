@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Blog from './containers/Blog/Blog';
 import NewPost from "./components/NewPost/NewPost";
-import {BrowserRouter as Router, Route, Link, NavLink, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, NavLink, Switch, Redirect} from "react-router-dom";
 import FullPost from './components/FullPost/FullPost';
 
 
@@ -24,9 +24,15 @@ class App extends Component {
           </ul>
           {/* <Blog /> */}
           <Switch>
-            <Route  path="/" exact component={Blog}></Route>
+          <Redirect from="new" to="new-post"></Redirect>
             <Route  path="/new-post" component={NewPost}></Route>
-            <Route  path="/posts/:id" component={FullPost}></Route>
+            <Route  path="/posts"  component={Blog}></Route>
+            <Route  path="/"  component={Blog}></Route>
+           
+
+           
+           
+           
           </Switch>
           
         </div>
