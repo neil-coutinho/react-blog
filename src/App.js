@@ -5,6 +5,10 @@ import NewPost from "./components/NewPost/NewPost";
 import {BrowserRouter as Router, Route, Link, NavLink, Switch, Redirect} from "react-router-dom";
 import FullPost from './components/FullPost/FullPost';
 
+import asyncComponent from "./components/AsyncComponent/AsyncComponent";
+const NewPostLazy = asyncComponent(() => {
+    return import('./components/NewPost/NewPost');
+});
 
 
 class App extends Component {
@@ -25,7 +29,7 @@ class App extends Component {
           {/* <Blog /> */}
           <Switch>
           <Redirect from="new" to="new-post"></Redirect>
-            <Route  path="/new-post" component={NewPost}></Route>
+            <Route  path="/new-post" component={NewPostLazy}></Route>
             <Route  path="/posts"  component={Blog}></Route>
             <Route  path="/"  component={Blog}></Route>
            
