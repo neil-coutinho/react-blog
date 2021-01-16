@@ -9,16 +9,13 @@ const asyncComponent = (fn) => {
                 component: null
             }
 
-            async componentDidMount() {
-                // const component = await fn();
-                // console.log(component)
-                // this.setState({component})
-
+            componentDidMount() {
+                
                 fn()
                     .then((cmp) => {
                         console.log(cmp)
                         this.setState({
-                            component: cmp
+                            component: cmp.default
                         })
                     })
 
@@ -27,7 +24,7 @@ const asyncComponent = (fn) => {
         
             render() {
                 const Cmp = this.state.component;
-        
+                console.log({Cmp})
                 return Cmp ?  <Cmp {...this.props}/> : null;
             }  
 

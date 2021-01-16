@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-
 import Blog from './containers/Blog/Blog';
-import NewPost from "./components/NewPost/NewPost";
 import {BrowserRouter as Router, Route, Link, NavLink, Switch, Redirect} from "react-router-dom";
-import FullPost from './components/FullPost/FullPost';
-
 import asyncComponent from "./components/AsyncComponent/AsyncComponent";
+
 const NewPostLazy = asyncComponent(() => {
     return import('./components/NewPost/NewPost');
 });
@@ -16,6 +13,7 @@ class App extends Component {
  
 
   render() {
+    console.log({NewPostLazy})
     return (
       <Router>
          <div className="App">
